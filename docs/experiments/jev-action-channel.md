@@ -112,12 +112,63 @@ Mean confidence 0.78 overall. Artifacts: `results/esi/jev_order_full.{jsonl,summ
 
 The structural symmetry that argmax-flips generative models in the majority of orderings largely vanishes in Jev's typed channel. More than that, the sensitivity **localizes**: it rises monotonically with difficulty (0% → 5% → 22.5%) and tracks ensemble entropy (easy ~0 bits, adversarial 1.31 bits). Jev isn't uniformly robust—it is robust exactly where the content is unambiguous and perturbable only where the question is genuinely hard, which is the behavior a well-behaved action channel should have. Position bias here is a signal of difficulty, not a pervasive nuisance.
 
-## What's Missing
+## Confidence vs Entropy (the new experiment)
 
-This characterizes the action channel in isolation. The report channel (F1/F2 uniform attractor, action-vs-report JS), probe-order anchoring (F4), and reasoning-trace findings (F6/F7) are **unavailable by construction** and would need a generative provider. Jev's `confidence` scalar is the one new handle Jev adds: comparing `jev_confidence` against `entropy(probabilities)` would test whether a non-generative confidence signal is better calibrated to the action distribution than an RLHF'd prose report—an experiment this repo does not yet have.
+Jev's `confidence` scalar is the one new handle Jev adds over a generative provider. The repository's central finding is that the *report* channel **diverges** from the action channel. Jev has no report channel, but it does emit confidence from a non-generative mechanism, so the natural question is: does that confidence carry information independent of the action distribution, or is it just a restatement of it?
+
+### Part 1 — Confidence is a readout of entropy (data-only)
+
+Reusing the 320 per-permutation `(entropy, confidence)` pairs from the full run—no new API calls:
+
+```bash
+python experiments/jev_confidence_entropy.py   # -> results/esi/jev_confidence_entropy.json
+```
+
+| Quantity | Value |
+|----------|-------|
+| Pearson(confidence, entropy) | **−0.965** |
+| Spearman(confidence, entropy) | **−0.978** |
+| Pearson(confidence, 1 − H/H_max) | +0.965 |
+| Mean \|confidence − (1 − H/H_max)\| | 0.075 |
+| Mean (confidence − (1 − H/H_max)) | +0.069 |
+
+By category, the fit to `1 − H/H_max` tightens with easiness:
+
+| Category | n | corr(conf, H) | mean \|residual\| |
+|----------|---|---------------|-------------------|
+| easy | 120 | **−1.000** | 0.0003 |
+| ambiguous | 120 | −0.921 | 0.106 |
+| adversarial | 80 | −0.942 | 0.139 |
+
+Confidence is a near-deterministic function of action entropy—essentially normalized entropy—exact on easy items and with a small, consistent *upward* bias on harder ones (confidence sits slightly above what entropy alone predicts). It is **not an independent channel**.
+
+### Part 2 — Calibration on ground truth
+
+```bash
+python experiments/jev_calibration.py          # -> results/esi/jev_calibration.json
+```
+
+Only the `easy` category carries `correct_answer`, so calibration runs there (15 questions, one unpermuted answer each):
+
+| Metric | Value |
+|--------|-------|
+| Accuracy | 1.00 (15/15) |
+| Mean confidence | 1.00 |
+| Calibration gap | 0.00 |
+
+!!! warning "Ceiling case, not a stress test"
+    Easy questions saturate at confidence 1.0 and entropy 0, so the reliability curve has a single bin. This confirms Jev is not under-confident on easy items, but it cannot probe calibration across the confidence range. The committed set has no ground truth on hard items; a real calibration curve would need labeled adversarial/ambiguous questions.
+
+### Interpretation
+
+This is the clean mirror image of the repository's core result. For generative models the report channel *diverges* from the action channel (the whole point of the project). For Jev there is effectively **nothing to diverge**: `confidence` is a monotone transform of action entropy. Jev collapses the belief/report distinction by construction—confirmed here empirically, not just predicted from its design.
+
+## Still Out of Scope
+
+The report channel (F1/F2 uniform attractor, action-vs-report JS), probe-order anchoring (F4), and reasoning-trace findings (F6/F7) remain **unavailable by construction** and would need a generative provider. Jev contributes the action channel, its structural-sensitivity profile, and the confidence-vs-entropy result above.
 
 ## Related
 
 - [ESI](esi.md) — the generative structural-sensitivity experiment this adapts
 - [Findings: Structural Sensitivity](../findings/structural-sensitivity.md)
-- Code: `experiments/jev_provider.py`, `experiments/esi_jev.py`
+- Code: `experiments/jev_provider.py`, `experiments/esi_jev.py`, `experiments/jev_confidence_entropy.py`, `experiments/jev_calibration.py`

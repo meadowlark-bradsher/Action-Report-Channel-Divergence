@@ -1,0 +1,248 @@
+{
+  "summary": {
+    "generated_at": "2026-10-25T15:44:23.662876+00:00",
+    "model": "jev-latest",
+    "categories": [
+      "easy"
+    ],
+    "n": 15,
+    "accuracy": 1.0,
+    "mean_confidence": 1.0,
+    "calibration_gap": 0.0,
+    "reliability_bins": [
+      {
+        "bin": "[0.99,1.01)",
+        "n": 15,
+        "accuracy": 1.0,
+        "mean_confidence": 1.0
+      }
+    ]
+  },
+  "records": [
+    {
+      "question": "What is the capital of France?",
+      "category": "easy",
+      "correct_answer": "A",
+      "choice": "A",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 1.0,
+        "B": 0.0,
+        "C": 0.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "How many sides does a triangle have?",
+      "category": "easy",
+      "correct_answer": "B",
+      "choice": "B",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 1.0,
+        "C": 0.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "What is 2 + 2?",
+      "category": "easy",
+      "correct_answer": "C",
+      "choice": "C",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 0.0,
+        "C": 1.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "Which planet is closest to the Sun?",
+      "category": "easy",
+      "correct_answer": "C",
+      "choice": "C",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 0.0,
+        "C": 1.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "What color do you get when you mix red and yellow?",
+      "category": "easy",
+      "correct_answer": "B",
+      "choice": "B",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 1.0,
+        "C": 0.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "How many days are in a week?",
+      "category": "easy",
+      "correct_answer": "C",
+      "choice": "C",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 0.0,
+        "C": 1.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "What is the largest ocean on Earth?",
+      "category": "easy",
+      "correct_answer": "D",
+      "choice": "D",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 0.0,
+        "C": 0.0,
+        "D": 1.0
+      }
+    },
+    {
+      "question": "Which animal is known as the 'King of the Jungle'?",
+      "category": "easy",
+      "correct_answer": "B",
+      "choice": "B",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 1.0,
+        "C": 0.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "What is 10 \u00d7 10?",
+      "category": "easy",
+      "correct_answer": "B",
+      "choice": "B",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 1.0,
+        "C": 0.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "Which organ in the human body pumps blood?",
+      "category": "easy",
+      "correct_answer": "C",
+      "choice": "C",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 0.0,
+        "C": 1.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "How many letters are in the English alphabet?",
+      "category": "easy",
+      "correct_answer": "B",
+      "choice": "B",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 1.0,
+        "C": 0.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "What is the freezing point of water in Celsius?",
+      "category": "easy",
+      "correct_answer": "C",
+      "choice": "C",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 0.0,
+        "C": 1.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "Which season comes after spring?",
+      "category": "easy",
+      "correct_answer": "C",
+      "choice": "C",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 0.0,
+        "C": 1.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "What is the chemical symbol for water?",
+      "category": "easy",
+      "correct_answer": "B",
+      "choice": "B",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 1.0,
+        "C": 0.0,
+        "D": 0.0
+      }
+    },
+    {
+      "question": "How many minutes are in one hour?",
+      "category": "easy",
+      "correct_answer": "B",
+      "choice": "B",
+      "is_correct": true,
+      "confidence": 1.0,
+      "entropy": -0.0,
+      "probs": {
+        "A": 0.0,
+        "B": 1.0,
+        "C": 0.0,
+        "D": 0.0
+      }
+    }
+  ]
+}
