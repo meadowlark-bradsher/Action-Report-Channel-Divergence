@@ -163,12 +163,61 @@ Only the `easy` category carries `correct_answer`, so calibration runs there (15
 
 This is the clean mirror image of the repository's core result. For generative models the report channel *diverges* from the action channel (the whole point of the project). For Jev there is effectively **nothing to diverge**: `confidence` is a monotone transform of action entropy. Jev collapses the belief/report distinction by construction—confirmed here empirically, not just predicted from its design.
 
+## 20 Questions: does the entropy reflect the game?
+
+The confidence result above shows Jev's `confidence` is a readout of its own action entropy. The sharper question is whether that entropy is *honest about an unfolding game*: as clues narrow a candidate set, does Jev's entropy fall in step with the true information-theoretic uncertainty?
+
+A fixed universe of 16 animals with an attribute table makes the oracle entropy exact: after each clue, the consistent set is the animals satisfying all clues, and `H_oracle = log2(|consistent|)`. Each step asks Jev one `choice` over all 16 animals given the clues so far.
+
+```bash
+python experiments/jev_twenty_questions.py   # -> results/esi/jev_twenty_questions.json
+```
+
+Aggregate over 3 games (11 clue-steps):
+
+| Quantity | Value |
+|----------|-------|
+| Pearson(H_jev, H_oracle) | **0.968** |
+| Pearson(confidence, H_oracle) | **−0.854** |
+| Mean mass on still-consistent set | 0.94 |
+| Final-answer-correct rate | 1.00 |
+
+**Jev's entropy tracks the true game entropy in trend, and it stays legal**—~94% of its mass sits on candidates still consistent with the clues, and every mid-game guess is within the consistent set. But it tracks *plausibility*, not *logic*. At the endpoints where clues deductively force a unique answer (`H_oracle = 0`), only one of three games collapsed to certainty; the other two kept ~0.9–1.0 bits of residual entropy and leaked 25–33% of mass onto eliminated candidates. Jev reflects soft similarity narrowing, not "A, B, C are ruled out, *therefore* X."
+
+!!! note "Priors, not max entropy"
+    With no clues, `H_jev ≈ 3.1` bits, not the full 4.0. Jev is not uniform over the 16 animals—it has a prior (it favors "dog"). The oracle assumes a uniform prior, so part of the early gap is Jev's prior, not missing game information.
+
+## Information gain: does Jev prefer high-IG questions, in proportion?
+
+Stress test at scale on the CUQ dataset (128 secrets, 122,913 questions with precomputed oracle bitmasks). For any game state, each candidate question has an exact expected information gain from its bitmask. We offer Jev a slate of K=6 questions and the current candidate set, ask which best narrows the possibilities, and compare its probabilities to the true IG.
+
+```bash
+python experiments/jev_question_ig.py --n-trials 400 --slate 6 \
+  --data-dir .../flan-oracle/cuq/release   # -> results/esi/jev_question_ig.json
+```
+
+Aggregate over 400 trials:
+
+| Metric | Value | Read |
+|--------|-------|------|
+| Top-1 accuracy | **0.498** | vs 0.167 random — ~3× chance |
+| Spearman(prob, IG) | **+0.534** | probabilities rank questions by IG |
+| Cosine(prob, IG-normalized) | **0.773** | proportions track IG |
+| corr(prob, \|split − 0.5\|) | **−0.543** | down-weights lopsided, low-info questions |
+| IG-capture ratio | **0.783** | its pick captures ~78% of the best available IG |
+
+**Jev genuinely values information gain, in proportion—but it is a heuristic, not an optimizer.** It beats chance ~3× at picking the true best question, its probability vector correlates with the IG vector, and it robustly avoids unbalanced questions. But it lands the single best question only about half the time and captures ~78% of available IG, roughly flat across game-state size.
+
+!!! warning "Noisy, unseen ground truth"
+    IG here is computed from the CUQ T5-XL bitmasks, which Jev never sees and which are themselves noisy (reported nearest-neighbor Jaccard 0.185). Some of the top-1 gap is Jev's item-knowledge disagreeing with T5, not Jev ignoring information gain. The clean follow-up rebuilds the offered slate's bitmasks with **Jev as its own oracle**, separating "values IG" from "agrees with T5".
+
 ## Still Out of Scope
 
-The report channel (F1/F2 uniform attractor, action-vs-report JS), probe-order anchoring (F4), and reasoning-trace findings (F6/F7) remain **unavailable by construction** and would need a generative provider. Jev contributes the action channel, its structural-sensitivity profile, and the confidence-vs-entropy result above.
+The report channel (F1/F2 uniform attractor, action-vs-report JS), probe-order anchoring (F4), and reasoning-trace findings (F6/F7) remain **unavailable by construction** and would need a generative provider. Jev contributes the action channel, its structural-sensitivity profile, the confidence-vs-entropy result, and the 20-Questions / information-gain experiments above.
 
 ## Related
 
 - [ESI](esi.md) — the generative structural-sensitivity experiment this adapts
 - [Findings: Structural Sensitivity](../findings/structural-sensitivity.md)
-- Code: `experiments/jev_provider.py`, `experiments/esi_jev.py`, `experiments/jev_confidence_entropy.py`, `experiments/jev_calibration.py`
+- Code: `experiments/jev_provider.py`, `experiments/esi_jev.py`, `experiments/jev_confidence_entropy.py`, `experiments/jev_calibration.py`, `experiments/jev_twenty_questions.py`, `experiments/jev_question_ig.py`
+- CUQ data (128 secrets, 122,913 questions) and bitmask utilities: `bridge-rl-portfolio-private/flan-oracle/cuq/release`, `belief-trajectory/src/bitmask.py`

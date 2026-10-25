@@ -1,0 +1,254 @@
+{
+  "generated_at": "2026-10-25T16:03:47.122747+00:00",
+  "model": "jev-latest",
+  "universe_size": 16,
+  "H_max_bits": 4.0,
+  "aggregate": {
+    "n_points": 11,
+    "pearson_Hjev_Horacle": 0.9677104979519563,
+    "pearson_conf_Horacle": -0.8540972556850962,
+    "pearson_Hjev_conf": -0.8924394274001018,
+    "mean_mass_on_consistent": 0.9445454545454546,
+    "mean_mass_on_consistent_final_steps": 0.8066666666666666,
+    "final_step_pick_is_secret_rate": 1.0
+  },
+  "games": [
+    {
+      "secret": "penguin",
+      "steps": [
+        {
+          "step": 0,
+          "clue": "(no clues)",
+          "n_consistent": 16,
+          "consistent": [
+            "dog",
+            "cat",
+            "elephant",
+            "lion",
+            "dolphin",
+            "whale",
+            "bat",
+            "eagle",
+            "penguin",
+            "ostrich",
+            "sparrow",
+            "salmon",
+            "shark",
+            "snake",
+            "crocodile",
+            "bee"
+          ],
+          "H_oracle": 4.0,
+          "H_jev": 3.136865074115562,
+          "confidence": 0.35,
+          "mass_on_consistent": 1.0,
+          "pick": "dog",
+          "pick_in_consistent": true,
+          "pick_is_secret": false
+        },
+        {
+          "step": 1,
+          "clue": "It is a bird.",
+          "n_consistent": 4,
+          "consistent": [
+            "eagle",
+            "penguin",
+            "ostrich",
+            "sparrow"
+          ],
+          "H_oracle": 2.0,
+          "H_jev": 1.7763304400333624,
+          "confidence": 0.41,
+          "mass_on_consistent": 1.0,
+          "pick": "sparrow",
+          "pick_in_consistent": true,
+          "pick_is_secret": false
+        },
+        {
+          "step": 2,
+          "clue": "It cannot fly.",
+          "n_consistent": 2,
+          "consistent": [
+            "penguin",
+            "ostrich"
+          ],
+          "H_oracle": 1.0,
+          "H_jev": 0.9988455359952018,
+          "confidence": 0.49,
+          "mass_on_consistent": 1.0,
+          "pick": "ostrich",
+          "pick_in_consistent": true,
+          "pick_is_secret": false
+        },
+        {
+          "step": 3,
+          "clue": "It lives in the water.",
+          "n_consistent": 1,
+          "consistent": [
+            "penguin"
+          ],
+          "H_oracle": 0.0,
+          "H_jev": -0.0,
+          "confidence": 1.0,
+          "mass_on_consistent": 1.0,
+          "pick": "penguin",
+          "pick_in_consistent": true,
+          "pick_is_secret": true
+        }
+      ]
+    },
+    {
+      "secret": "dog",
+      "steps": [
+        {
+          "step": 0,
+          "clue": "(no clues)",
+          "n_consistent": 16,
+          "consistent": [
+            "dog",
+            "cat",
+            "elephant",
+            "lion",
+            "dolphin",
+            "whale",
+            "bat",
+            "eagle",
+            "penguin",
+            "ostrich",
+            "sparrow",
+            "salmon",
+            "shark",
+            "snake",
+            "crocodile",
+            "bee"
+          ],
+          "H_oracle": 4.0,
+          "H_jev": 3.0932456836783335,
+          "confidence": 0.35,
+          "mass_on_consistent": 1.0,
+          "pick": "dog",
+          "pick_in_consistent": true,
+          "pick_is_secret": true
+        },
+        {
+          "step": 1,
+          "clue": "It is a mammal.",
+          "n_consistent": 7,
+          "consistent": [
+            "dog",
+            "cat",
+            "elephant",
+            "lion",
+            "dolphin",
+            "whale",
+            "bat"
+          ],
+          "H_oracle": 2.807354922057604,
+          "H_jev": 2.474173568373647,
+          "confidence": 0.38,
+          "mass_on_consistent": 0.99,
+          "pick": "dog",
+          "pick_in_consistent": true,
+          "pick_is_secret": true
+        },
+        {
+          "step": 2,
+          "clue": "It is a domestic pet.",
+          "n_consistent": 2,
+          "consistent": [
+            "dog",
+            "cat"
+          ],
+          "H_oracle": 1.0,
+          "H_jev": 0.9506720926870659,
+          "confidence": 0.61,
+          "mass_on_consistent": 1.0,
+          "pick": "dog",
+          "pick_in_consistent": true,
+          "pick_is_secret": true
+        },
+        {
+          "step": 3,
+          "clue": "It is medium-sized.",
+          "n_consistent": 1,
+          "consistent": [
+            "dog"
+          ],
+          "H_oracle": 0.0,
+          "H_jev": 0.9149263727797274,
+          "confidence": 0.65,
+          "mass_on_consistent": 0.67,
+          "pick": "dog",
+          "pick_in_consistent": true,
+          "pick_is_secret": true
+        }
+      ]
+    },
+    {
+      "secret": "shark",
+      "steps": [
+        {
+          "step": 0,
+          "clue": "(no clues)",
+          "n_consistent": 16,
+          "consistent": [
+            "dog",
+            "cat",
+            "elephant",
+            "lion",
+            "dolphin",
+            "whale",
+            "bat",
+            "eagle",
+            "penguin",
+            "ostrich",
+            "sparrow",
+            "salmon",
+            "shark",
+            "snake",
+            "crocodile",
+            "bee"
+          ],
+          "H_oracle": 4.0,
+          "H_jev": 3.1335870124441447,
+          "confidence": 0.34,
+          "mass_on_consistent": 1.0,
+          "pick": "dog",
+          "pick_in_consistent": true,
+          "pick_is_secret": false
+        },
+        {
+          "step": 1,
+          "clue": "It is a fish.",
+          "n_consistent": 2,
+          "consistent": [
+            "salmon",
+            "shark"
+          ],
+          "H_oracle": 1.0,
+          "H_jev": 1.0437755759480858,
+          "confidence": 0.65,
+          "mass_on_consistent": 0.98,
+          "pick": "salmon",
+          "pick_in_consistent": true,
+          "pick_is_secret": false
+        },
+        {
+          "step": 2,
+          "clue": "It is large.",
+          "n_consistent": 1,
+          "consistent": [
+            "shark"
+          ],
+          "H_oracle": 0.0,
+          "H_jev": 1.0023066380976395,
+          "confidence": 0.73,
+          "mass_on_consistent": 0.75,
+          "pick": "shark",
+          "pick_in_consistent": true,
+          "pick_is_secret": true
+        }
+      ]
+    }
+  ]
+}
