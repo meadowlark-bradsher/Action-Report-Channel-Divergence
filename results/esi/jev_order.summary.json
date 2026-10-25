@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-10-25T15:18:12.028096+00:00",
+  "model": "jev-latest",
+  "variants": 4,
+  "questions_file": "/Users/meadowlarkbradsher/workspace/repos/genai/epistemic-channel-divergence/.claude/worktrees/friendly-hawking-6e3ba8/data/mc_questions.json",
+  "channel": "action (Jev; report/reasoning channels unavailable by design)",
+  "summary": {
+    "n_questions": 9,
+    "mean_argmax_flip_rate": 0.027777777777777776,
+    "mean_hellinger": 0.03591095157097795,
+    "mean_ensemble_entropy": 0.645419743175847,
+    "mean_confidence": 0.7902777777777777,
+    "by_category": {
+      "ambiguous": {
+        "n": 3,
+        "mean_argmax_flip_rate": 0.0,
+        "mean_hellinger": 0.04794025103792455,
+        "mean_ensemble_entropy": 0.7649208753936745
+      },
+      "easy": {
+        "n": 3,
+        "mean_argmax_flip_rate": 0.0,
+        "mean_hellinger": 0.0,
+        "mean_ensemble_entropy": 0.0
+      },
+      "adversarial": {
+        "n": 3,
+        "mean_argmax_flip_rate": 0.08333333333333333,
+        "mean_hellinger": 0.059792603675009305,
+        "mean_ensemble_entropy": 1.1713383541338669
+      }
+    }
+  }
+}
