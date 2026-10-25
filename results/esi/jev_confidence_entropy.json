@@ -1,0 +1,30 @@
+{
+  "n": 320,
+  "entropy_mean": 0.5842782626440425,
+  "confidence_mean": 0.777,
+  "pearson_conf_entropy": -0.9648809368871387,
+  "spearman_conf_entropy": -0.9779570646745742,
+  "pearson_conf_vs_1minusHnorm": 0.9648809368871387,
+  "mean_abs_residual": 0.07451824351501493,
+  "mean_residual": 0.06913913132202122,
+  "max_abs_residual": 0.2778621708753549,
+  "by_category": {
+    "ambiguous": {
+      "n": 120,
+      "pearson_conf_entropy": -0.9207566889951642,
+      "mean_abs_residual": 0.10585680203799375
+    },
+    "easy": {
+      "n": 120,
+      "pearson_conf_entropy": -0.9999999999999999,
+      "mean_abs_residual": 0.0002533047328996294
+    },
+    "adversarial": {
+      "n": 80,
+      "pearson_conf_entropy": -0.942271565456938,
+      "mean_abs_residual": 0.13890781390371965
+    }
+  },
+  "generated_at": "2026-10-25T15:45:03.728641+00:00",
+  "input": "/Users/meadowlarkbradsher/workspace/repos/genai/epistemic-channel-divergence/.claude/worktrees/friendly-hawking-6e3ba8/results/esi/jev_order_full.jsonl"
+}

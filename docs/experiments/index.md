@@ -11,6 +11,7 @@ How to run each experiment and what it tests. Each experiment has a clear episte
 | [Alignment Regularizer](alignment-regularizer.md) | Falsify strategic hedging hypothesis | Effect of incentives |
 | [ESI](esi.md) | Distinguish noise vs structural sensitivity | ESI_action / ESI_report ratio |
 | [Ensemble Bootstrap](ensemble-bootstrap.md) | Turn diagnostics into measurement fix | JS reduction, optimal K |
+| [Jev Action Channel](jev-action-channel.md) | Typed action channel + option-order sensitivity | Argmax flip rate, Hellinger |
 
 ## Supported Providers
 
