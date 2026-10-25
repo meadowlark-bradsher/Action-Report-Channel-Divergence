@@ -31,6 +31,7 @@ nav:
     - Alignment Regularizer: experiments/alignment-regularizer.md
     - ESI: experiments/esi.md
     - Ensemble Bootstrap: experiments/ensemble-bootstrap.md
+    - Jev Action Channel: experiments/jev-action-channel.md
   - Lab Notes:
     - Belief Probe Notes: labnotes/belief-probe-notes.md
     - Gravitational Pull: labnotes/gravitational-pull-experiment.md
